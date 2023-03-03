@@ -15,25 +15,25 @@ typedef struct {
 
 // prototypes
 
-void insertNode(BST* ,int);
-/*
-void insertNode_R(TreeNodePtr * t,int value){
-  if(t==NULL){
-   t=new TreeNode;
-	 if(t){
-		t->leftPtr=NULL;
-		t->rightPtr=NULL;
-		t->data=value;
-   }
+
+
+void insertNode_R(TreeNodePtr *t,int value) {
+  if((*t)==NULL) {
+     *t = (TreeNodePtr)malloc(sizeof(struct TreeNode)); 
+  if(*t) {
+     (*t)->leftPtr = NULL;
+		 (*t)->rightPtr = NULL;
+		 (*t)->data = value;
+     }
+    else printf("It's not inserted, No memory allocate !");
   }
-  else{
-     if(t->data>=value) //left
-        
-     else //right
-      
-   }
+  else { if((*t)->data >= value) insertNode_R(&(*t)->leftPtr,value);
+       //left
+    else insertNode_R(&(*t)->rightPtr,value);
+       //right
+    }
 }
-*/
+
 void insertNode(BST *b, int value) {
 	 TreeNodePtr t = b->root , new_node;
 	 int inserted = 0;
@@ -47,10 +47,11 @@ void insertNode(BST *b, int value) {
       b->root=new_node; }
 		else {
      while(!inserted) {
-       if(t->data >= value) { 
+        if(t->data >= value) { 
           if(t->leftPtr == NULL) { 
           t->leftPtr = new_node;
-          inserted = 1; }
+          inserted = 1; //success inserted break loop
+        }
           else t = t->leftPtr;
 
          /* move/insert to the left*/
@@ -58,7 +59,8 @@ void insertNode(BST *b, int value) {
         else { 
           if(t->rightPtr == NULL) { 
           t->rightPtr = new_node;
-          inserted = 1; } 
+          inserted = 1; //success inserted break loop 
+        } 
           else t = t->rightPtr;
         }
          /* move/insert to the right*/
