@@ -19,8 +19,13 @@ int main(int argc, char **argv)
 
    // traverse the tree inOrder
    printf("\nThe inOrder traversal is:\n" );
-   inOrder( b.root );
+   inOrder(b.root);
+   printf("\nThe preOrder traversal is:\n");
+   preOrder(b.root);
+   printf("\nThe postOrder traversal is:\n"); 
+   postOrder(b.root); 
    //4 2 9 8 6 1 3
+   //7 3 1 10 6 4 7 14 13
 /*
    // traverse the tree postOrder
  printf("\nThe postnOrder traversal is:\n" );   postOrder( rootPtr );

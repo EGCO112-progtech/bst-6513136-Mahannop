@@ -2,7 +2,7 @@
 
 struct TreeNode {                                           
     struct TreeNode *leftPtr; // pointer to left subtree
-   int data; // node value                               
+    int data; // node value                               
     struct TreeNode *rightPtr; // pointer to right subtree
 }; // end structure treeNode 
         
@@ -76,12 +76,28 @@ void insertNode(BST *b, int value) {
 void inOrder( TreeNodePtr treePtr )
 { 
    // if tree is not empty, then traverse
-   if ( treePtr != NULL ) {        
+   if (treePtr!=NULL) {        
         
-      inOrder( treePtr->leftPtr ); //Recursion to the left
+      inOrder(treePtr->leftPtr); //Recursion to the left call until find NULL in left side ! 
  
       printf("%3d",treePtr->data) ;  //print the value 
    
-      inOrder( treePtr->rightPtr ); //Recursion to the right
+      inOrder(treePtr->rightPtr); //Recursion to the right call until find NULL in right side !
    } // end if                          
 } // end 
+
+void preOrder( TreeNodePtr treePtr) {
+    if(treePtr != NULL) {
+       printf("%3d",treePtr->data); 
+       preOrder(treePtr->leftPtr);
+       preOrder(treePtr->rightPtr); 
+    }
+}
+
+void postOrder( TreeNodePtr treePtr) {
+    if(treePtr != NULL) {
+       postOrder(treePtr->leftPtr);
+       postOrder(treePtr->rightPtr);
+       printf("%3d",treePtr->data);
+    }
+}
