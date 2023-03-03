@@ -48,15 +48,18 @@ void insertNode(BST *b, int value) {
 		else {
      while(!inserted) {
        if(t->data >= value) { 
-          if(t->leftPtr == NULL) t->leftPtr = new_node;
+          if(t->leftPtr == NULL) { 
+          t->leftPtr = new_node;
+          inserted = 1; }
           else t = t->leftPtr;
-          inserted = 1; 
+
          /* move/insert to the left*/
       }
         else { 
-          if(t->rightPtr == NULL) t->rightPtr = new_node;
-          else t->rightPtr = new_node;
-          inserted = 1;
+          if(t->rightPtr == NULL) { 
+          t->rightPtr = new_node;
+          inserted = 1; } 
+          else t = t->rightPtr;
         }
          /* move/insert to the right*/
     } //end while		
