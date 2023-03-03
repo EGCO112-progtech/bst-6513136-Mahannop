@@ -73,7 +73,7 @@ void insertNode(BST *b, int value) {
 }//end function
 
 
-void inOrder( TreeNodePtr treePtr )
+void inOrder(TreeNodePtr treePtr)
 { 
    // if tree is not empty, then traverse
    if (treePtr!=NULL) {        
@@ -86,7 +86,7 @@ void inOrder( TreeNodePtr treePtr )
    } // end if                          
 } // end 
 
-void preOrder( TreeNodePtr treePtr) {
+void preOrder(TreeNodePtr treePtr) {
     if(treePtr != NULL) {
        printf("%3d",treePtr->data); 
        preOrder(treePtr->leftPtr);
@@ -94,10 +94,22 @@ void preOrder( TreeNodePtr treePtr) {
     }
 }
 
-void postOrder( TreeNodePtr treePtr) {
+void postOrder(TreeNodePtr treePtr) {
     if(treePtr != NULL) {
        postOrder(treePtr->leftPtr);
        postOrder(treePtr->rightPtr);
        printf("%3d",treePtr->data);
     }
 }
+
+void tree_display(TreeNodePtr treePtr,int space) {
+     //if(treePtr == NULL) printf("Invalid, Need Memory !\n");
+      //end if
+     if(treePtr != NULL) {
+       tree_display(treePtr->rightPtr,space+1); //print right
+       for(int i=0;i<space;i++) { printf("     "); }
+         printf("%5d\n",treePtr->data);
+     //endfor
+      tree_display(treePtr->leftPtr,space+1); //print left 
+    } //endif
+  } //end function
